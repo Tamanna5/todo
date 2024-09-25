@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/usr/src/app
+    command: nodemon index.js
+
+  frontend:
+    build:
+      context: ./client
+    ports:
+      - "5173:80"
+    
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
